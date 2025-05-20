@@ -41,7 +41,7 @@
     },
     {
         "title": "Know vulnerabilities authenticated",
-        "file": "known_vuln_auth.md"
+        "file": "know_vuln_auth.md"
     },
     {
         "title": "ACLs/ACEs permissions",
