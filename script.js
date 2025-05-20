@@ -100,14 +100,14 @@ navNext.onclick = () => navEl.scrollBy({ left: 200, behavior: 'smooth' });
 navEl.onscroll = updateScrollButtons;
 
 async function loadMarkdown(file) {
-  const res = await fetch(`/${file}`);
+  const res = await fetch(`/AD-mindmap/${file}`);
   if (!res.ok) return `<p>Error loading ${file}</p>`;
   const text = await res.text();
   return marked.parse(text);
 }
 
 function loadModule(file, btn) {
-  loadMarkdown(`data/${file}`).then(html => {
+  loadMarkdown(`/AD-mindmap/data/${file}`).then(html => {
     contentEl.innerHTML = html;
   });
   document.querySelectorAll('#module-nav button').forEach(b => b.classList.remove('active'));
@@ -116,7 +116,7 @@ function loadModule(file, btn) {
 }
 
 async function loadToolbox() {
-  const res = await fetch('tools.yml');
+  const res = await fetch('/AD-mindmap/tools.yml');
   const text = await res.text();
   const data = jsyaml.load(text);
   const tools = data.tools;
@@ -127,7 +127,7 @@ async function loadToolbox() {
     block.className = 'tool-block';
     if (icon) {
       const img = document.createElement('img');
-      img.src = `/icon/${icon}.png`;
+      img.src = `/AD-mindmap/icon/${icon}.png`;
       img.alt = icon;
       img.style.height = '1em';
       img.style.verticalAlign = 'middle';
@@ -191,7 +191,7 @@ expandAllBtn.onclick = async () => {
     expandAllBtn.textContent = 'Collapse All ▲';
     expandAllContainer.style.display = 'flex';
     if (!expandAllContainer.hasChildNodes()) {
-      const res = await fetch('/data/manifest.json');
+      const res = await fetch('/AD-mindmap/data/manifest.json');
       if (!res.ok) {
         expandAllContainer.innerHTML = '<p>Error loading modules</p>';
         return;
@@ -248,7 +248,7 @@ navSearch.addEventListener('input', e => {
 
 window.addEventListener('DOMContentLoaded', async () => {
   await loadToolbox();
-  const res = await fetch('/data/manifest.json');
+  const res = await fetch('/AD-mindmap/data/manifest.json');
   const modules = await res.json();
   navEl.innerHTML = '';
   modules.forEach(({ title, file }) => {
