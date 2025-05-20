@@ -100,14 +100,14 @@ navNext.onclick = () => navEl.scrollBy({ left: 200, behavior: 'smooth' });
 navEl.onscroll = updateScrollButtons;
 
 async function loadMarkdown(file) {
-  const res = await fetch(`/${file}`);
+  const res = await fetch(`/AD-mindmap/${file}`);
   if (!res.ok) return `<p>Error loading ${file}</p>`;
   const text = await res.text();
   return marked.parse(text);
 }
 
 function loadModule(file, btn) {
-  loadMarkdown(`/AD-mindmap/data/${file}`).then(html => {
+  loadMarkdown(`/data/${file}`).then(html => {
     contentEl.innerHTML = html;
   });
   document.querySelectorAll('#module-nav button').forEach(b => b.classList.remove('active'));
