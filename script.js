@@ -100,7 +100,7 @@ navNext.onclick = () => navEl.scrollBy({ left: 200, behavior: 'smooth' });
 navEl.onscroll = updateScrollButtons;
 
 async function loadMarkdown(file) {
-  const res = await fetch(`/AD-mindmap/${file}`);
+  const res = await fetch(`/${file}`);
   if (!res.ok) return `<p>Error loading ${file}</p>`;
   const text = await res.text();
   return marked.parse(text);
