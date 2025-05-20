@@ -1,0 +1,74 @@
+[
+    {
+        "title": "No Credentials",
+        "file": "no_creds.md"
+    },
+    {
+        "title": "Valid User (No Password)",
+        "file": "valid_user.md"
+    },
+    {
+        "title": "Valid Credentials (cleartext creds, nt hash, kerberos ticket)",
+        "file": "authenticated.md"
+    },
+    {
+        "title": "Low access (Privilege escalation)",
+        "file": "low_access.md"
+    },
+    {
+        "title": "Kerberos Delegation",
+        "file": "delegation.md"
+    },
+    {
+        "title": "Admin Access",
+        "file": "admin.md"
+    },
+    {
+        "title": "Domain Admin",
+        "file": "dom_admin.md"
+    },
+    {
+        "title": "Quick Compromise",
+        "file": "low_hanging.md"
+    },
+    {
+        "title": "Man In The Middle (Listen and Relay)",
+        "file": "mitm.md"
+    },
+    {
+        "title": "Crack Hash",
+        "file": "crack_hash.md"
+    },
+    {
+        "title": "Know vulnerabilities authenticated",
+        "file": "known_vuln_auth.md"
+    },
+    {
+        "title": "ACLs/ACEs permissions",
+        "file": "acl.md"
+    },
+    {
+        "title": "ADCS",
+        "file": "adcs.md"
+    },
+    {
+        "title": "SCCM",
+        "file": "sccm.md"
+    },
+    {
+        "title": "Lateral Movement",
+        "file": "lat_move.md"
+    },
+    {
+        "title": "Trusts",
+        "file": "trusts.md"
+    },
+    {
+        "title": "Persistence",
+        "file": "persistence.md"
+    },
+    {
+        "title": "Credits",
+        "file": "authors.md"
+    }
+]

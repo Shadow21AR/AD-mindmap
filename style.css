@@ -1,12 +1,294 @@
-button {
-  margin: 5px;
-  padding: 10px 15px;
-  border: none;
-  background-color: #333;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+:root {
+  --bg-color: #1c1a1a;
+  --text-color: #c8c6c4;
+  --accent-color: #ae27ff;
+  --shadow-color: #5e00ff88;
+  --header-bg: #2a2828;
+  --button-bg: #3b3838;
+  --button-hover: #ae27ff;
+  --ribbon-bg: #2a2828;
+  --ribbon-hover: #5a2db2;
+  --max-width: 900px;
+  --border-color: #444040;
+  --header-bg: #222;
+  --text-color: #eee;
+  --border-color: #444;
 }
-button:hover {
-  background-color: #555;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 1rem 0 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+  margin: 0 0 0.8rem;
+  font-weight: 600;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 0 1rem;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 5px rgba(174, 39, 255, 0.2);
+}
+
+header details {
+  width: 100%;
+  background-color: var(--header-bg);
+  padding: 0 1rem 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto 1rem;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--border-color);
+}
+
+summary {
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  padding: 0.7rem 0;
+  border-radius: 6px;
+  user-select: none;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+}
+
+summary:hover {
+  background-color: var(--button-hover);
+  color: white;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 1rem;
+  justify-items: start;
+  align-items: stretch;
+}
+
+details[open] .tool-grid {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.tool-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tool-grid::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+.tool-grid::-webkit-scrollbar-thumb {
+  background-color: var(--button-hover);
+  border-radius: 3px;
+}
+
+.tool-grid .tool-block {
+  background: var(--button-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  word-break: break-word;
+}
+
+.tool-grid .tool-block:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+  transform: scale(1.03);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.nav-tab {
+  background-color: var(--ribbon-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  padding: 0.6rem 1.6rem;
+  border-radius: 8px 8px 0 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  white-space: nowrap;
+  position: relative;
+}
+
+.nav-tab:hover {
+  background-color: var(--ribbon-hover);
+  box-shadow: inset 0 -4px 5px var(--button-hover);
+}
+
+#module-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 12px;
+  background-color: transparent;
+  padding: 0 1rem;
+  margin: 0 auto 2rem;
+  max-width: var(--max-width);
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  user-select: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--button-hover) transparent;
+}
+
+#module-nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+#module-nav::-webkit-scrollbar-thumb {
+  background-color: var(--button-hover);
+  border-radius: 4px;
+}
+
+#module-nav button.active {
+  background-color: var(--button-hover);
+  box-shadow: inset 0 -4px 8px var(--accent-color);
+  color: white;
+  border-bottom: 3px solid var(--accent-color);
+  z-index: 1;
+}
+
+#nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: stretch;
+  max-width: var(--max-width);
+  margin: 0 auto 1rem;
+  position: relative;
+}
+
+#nav-prev, #nav-next {
+  background-color: var(--ribbon-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px 8px 0 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-size: 1rem;
+}
+
+#nav-search {
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background: var(--button-bg);
+  color: var(--text-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#nav-expanded {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--header-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 8px 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  padding: 0.5rem;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+#nav-expanded:hover {
+  display: block;
+}
+
+#nav-expanded button {
+  display: block;
+  width: 100%;
+  margin: 0.2rem 0;
+  text-align: left;
+  background: var(--ribbon-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+#nav-expanded button:hover {
+  background-color: var(--ribbon-hover);
+}
+
+#expand-btn {
+  display: none;
+  width: 100%;
+  padding: 0.6rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: var(--ribbon-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#expand-btn:hover {
+  background-color: var(--ribbon-hover);
+}
+
+/* Expanded menu appears on hover */
+#expand-btn:hover + #nav-expanded,
+#nav-expanded:hover {
+  display: block !important;
+}
+
+
+main#content {
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
+  padding: 1rem 1.2rem;
+  background-color: #222020;
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.5;
+  box-sizing: border-box;
+  min-height: 300px;
+  box-shadow: inset 0 0 20px #00000080;
+  user-select: text;
 }

@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AD Toolkit</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>AD Attack Mindmap</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
-    <h1>AD Attack Toolkit</h1>
-    <nav>
-      <button onclick="loadModule('tools')">🛠 Tools</button>
-      <button onclick="loadModule('With_No_Credentials')">📁 Module 1</button>
-      <button onclick="loadModule('module2')">📁 Module 2</button>
-    </nav>
+    <h1>AD Attack Mindmap</h1>
+    <details id="toolbox-wrapper">
+      <summary>Tools reference</summary>
+      <div class="tool-grid" id="toolbox"></div>
+    </details>
   </header>
 
-  <main id="content">
-    <p>Select a module to view its contents...</p>
-  </main>
+  <div id="nav-wrapper">
+    <button id="nav-prev" aria-label="Previous tabs" style="display:none;">‹</button>
+    <nav id="module-nav"></nav>
+    <button id="nav-next" aria-label="Next tabs" style="display:none;">›</button>
+    <div id="nav-expanded" style="display:none;"></div>
+    <input type="search" id="nav-search" placeholder="Search tabs..." />
+  </div>
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <main id="content">
+    <p>Loading...</p>
+  </main>
 </body>
 </html>
